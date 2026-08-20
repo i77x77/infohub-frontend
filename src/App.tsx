@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainLayout from "./layouts/MainLayout.jsx";
-import Home from "./pages/Home.jsx";
-import Events from "./pages/Events.jsx";
-import Documents from "./pages/Documents.jsx";
-import NotFound from "./pages/NotFound.jsx";
+import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/Home";
+import Events from "./pages/Events";
+import Documents from "./pages/Documents";
+import NotFound from "./pages/NotFound";
 
 // Корневой компонент: описывает роутинг приложения.
 // MainLayout — общая обёртка (например, навигация) для вложенных страниц,
