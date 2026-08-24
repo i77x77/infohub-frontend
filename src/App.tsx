@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Events from "./pages/Events";
 import Documents from "./pages/Documents";
 import NotFound from "./pages/NotFound";
+import EventCard from "./pages/EventCard";
 
 // Корневой компонент: описывает роутинг приложения.
 // MainLayout — общая обёртка (например, навигация) для вложенных страниц,
@@ -15,6 +16,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="events" element={<Events />} />
+          <Route path="events/:id" element={<EventCard />} />
           <Route path="documents" element={<Documents />} />
           <Route path="*" element={<NotFound />} />
         </Route>
