@@ -5,29 +5,38 @@ interface Props {
 }
 
 export default function EventInfoGrid({ event }: Props) {
-  const fields = [
-    { label: 'Тип мероприятия', value: event.type?.name || '—' },
-    {
-      label: 'Место проведения',
-      value: event.location?.city
-        ? `${event.location.city}, ${event.location.region}`
-        : '—',
-    },
-    { label: 'Организатор', value: event.organizer?.name || '—' },
-    {
-      label: 'Дата проведения',
-      value: `${new Date(event.dateStart).toLocaleDateString('ru-RU')} г. – ${new Date(event.dateEnd).toLocaleDateString('ru-RU')} г.`,
-    },
-  ];
-
   return (
     <div className="infoGrid">
-      {fields.map((field, index) => (
-        <div className="infoItem" key={index}>
-          <span className="label">{field.label}</span>
-          <span className="value">{field.value}</span>
-        </div>
-      ))}
+      {/* 1-я колонка: заголовки */}
+      <div className="infoItem infoLabel">
+        <span>Тип мероприятия:</span>
+        <span>Организатор:</span>
+      </div>
+
+      {/* 2-я колонка: значения */}
+      <div className="infoItem infoValue">
+        <span>{event.type?.name || '—'}</span>
+        <span>{event.organizer?.name || '—'}</span>
+      </div>
+
+      {/* 3-я колонка: заголовки */}
+      <div className="infoItem infoLabel">
+        <span>Место проведения:</span>
+        <span>Дата проведения:</span>
+      </div>
+
+      {/* 4-я колонка: значения */}
+      <div className="infoItem infoValue">
+        <span>
+          {event.location?.city
+            ? `${event.location.city}, ${event.location.region}`
+            : '—'}
+        </span>
+        <span>
+          {new Date(event.dateStart).toLocaleDateString('ru-RU')} г. –{' '}
+          {new Date(event.dateEnd).toLocaleDateString('ru-RU')} г.
+        </span>
+      </div>
     </div>
   );
 }

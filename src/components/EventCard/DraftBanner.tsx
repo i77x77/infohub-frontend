@@ -9,7 +9,8 @@ export default function DraftBanner() {
         <div>
           <div className="draftTitle">Черновик</div>
           <div className="draftSubtitle">
-            Опубликуйте карточку, чтобы она стала доступна пользователям для чтения
+            Опубликуйте карточку, чтобы она стала доступна пользователям{' '}
+            <a href="#" className="draftLink">для чтения</a>
           </div>
         </div>
       </div>

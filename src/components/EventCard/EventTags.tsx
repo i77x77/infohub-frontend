@@ -12,14 +12,7 @@ export default function EventTags({ tags }: Props) {
       <span className="tagsLabel">Теги:</span>
       <div className="tagsList">
         {tags.map((tag) => (
-          <span
-            key={tag.id}
-            className="tagItem"
-            style={{
-              color: tag.color || '#1677ff',
-              borderColor: tag.color || '#1677ff',
-            }}
-          >
+          <span key={tag.id} className="tagItem">
             {tag.name}
           </span>
         ))}

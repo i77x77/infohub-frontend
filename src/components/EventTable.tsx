@@ -113,7 +113,7 @@ export default function EventTable({ events, loading }: EventTableProps) {
           <Tag 
             key={tag.id} 
             style={{
-              backgroundColor: 'transparent',
+              backgroundColor: '#fafafa',
               color: '#000000',
               fontWeight: 500,
               border: '1px solid #d9d9d9',
