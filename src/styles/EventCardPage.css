@@ -1,0 +1,244 @@
+/* Карточка мероприятия */
+.cardPage {
+  padding: 24px;
+}
+
+/* Верхняя панель */
+.topPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* Хлебные крошки */
+.breadcrumb {
+  font-size: 14px;
+}
+
+.breadcrumbLink {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.breadcrumbSeparator {
+  margin: 0 8px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.breadcrumbCurrent {
+  color: rgba(0, 0, 0, 0.88);
+}
+
+/* Статус + доступ + кнопка */
+.topActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Заголовок над карточкой */
+.cardHeaderOutside {
+  margin-bottom: 16px;
+}
+
+.cardTitleWrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.cardLabel {
+  color: #13c2c2;
+  background-color: #e6fffb;
+  border: 1px solid #87e8de;
+  border-radius: 4px;
+  padding: 2px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.cardTitleOutside {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+/* Карточка */
+.eventCard {
+  border-radius: 8px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    0 1px 6px -1px rgba(0, 0, 0, 0.02),
+    0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Баннер для черновика */
+.draftBanner {
+  background-color: #fffbe6;
+  border: 1px solid #ffe58f;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.draftBannerContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.draftIcon {
+  font-size: 20px;
+  color: #faad14;
+}
+
+.draftTitle {
+  font-weight: 500;
+  font-size: 16px;
+  color: #d48806;
+}
+
+.draftSubtitle {
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 14px;
+}
+
+/* Главная информация */
+.infoSection {
+  margin-top: 8px;
+}
+
+.infoTitle {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: rgba(0, 0, 0, 0.88);
+}
+
+/* Сетка 2×2 */
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 32px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.infoItem .label {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.infoItem .value {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.88);
+}
+
+/* Разделитель */
+.divider {
+  border: none;
+  border-top: 1px solid #f0f0f0;
+  margin: 16px 0;
+}
+
+/* Теги */
+.tagsWrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.tagsLabel {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.45);
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.tagsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tagItem {
+  padding: 2px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  display: inline-block;
+  background-color: transparent;
+  border: 1px solid;
+}
+
+/* Описание */
+.descriptionWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.descriptionLabel {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.45);
+  flex-shrink: 0;
+}
+
+.descriptionText {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.descriptionToggle {
+  color: #1677ff;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.descriptionToggle:hover {
+  color: #4096ff;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .draftBanner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .topPanel {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cardHeaderOutside {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cardTitleWrapper {
+    flex-wrap: wrap;
+  }
+
+  .tagsWrapper {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

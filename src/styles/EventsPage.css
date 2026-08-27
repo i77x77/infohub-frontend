@@ -35,3 +35,14 @@
   border-radius: 8px;
   border: 1px solid #f0f0f0;
 }
+
+/* Строка с черновиком - бледно-жёлтый фон */
+.draft-row {
+  background-color: #fffced !important;
+}
+
+/* Увеличиваем заголовки таблицы */
+.ant-table-thead .ant-table-cell {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}

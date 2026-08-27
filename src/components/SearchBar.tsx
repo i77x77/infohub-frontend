@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Input, Select } from 'antd';
+import { Input, Dropdown, Button, Space } from 'antd';
+import { FilterOutlined, LockOutlined, GlobalOutlined } from '@ant-design/icons';
+import type { MenuProps } from 'antd';
 
 interface SearchBarProps {
   searchValue: string;
@@ -19,29 +21,39 @@ export default function SearchBar({
   onAccessLevelChange
 }: SearchBarProps) {
   const [localSearch, setLocalSearch] = useState(searchValue);
-  const [localStatus, setLocalStatus] = useState(statusValue);
-  const [localAccessLevel, setLocalAccessLevel] = useState(accessLevelValue);
 
-  // Синхронизация с пропсами
   useEffect(() => {
     setLocalSearch(searchValue);
   }, [searchValue]);
 
-  useEffect(() => {
-    setLocalStatus(statusValue);
-  }, [statusValue]);
+  const statusMenuItems: MenuProps['items'] = [
+    { key: '', label: 'Все статусы' },
+    { key: 'PUBLISHED', label: 'Опубликован' },
+    { key: 'DRAFT', label: 'Черновик' },
+  ];
 
-  useEffect(() => {
-    setLocalAccessLevel(accessLevelValue);
-  }, [accessLevelValue]);
+  const handleStatusClick: MenuProps['onClick'] = ({ key }) => {
+    onStatusChange(key);
+  };
 
-  // Поиск при нажатии Enter или лупы
-  const handleSearch = () => {
-    onSearch(localSearch);
+  const accessMenuItems: MenuProps['items'] = [
+    { key: '', label: 'Все доступы' },
+    { key: 'PUBLIC', label: 'Публичный' },
+    { key: 'RESTRICTED', label: 'Ограниченный' },
+  ];
+
+  const handleAccessClick: MenuProps['onClick'] = ({ key }) => {
+    onAccessLevelChange(key);
+  };
+
+  const getAccessIcon = () => {
+    if (accessLevelValue === 'PUBLIC') return <GlobalOutlined />;
+    if (accessLevelValue === 'RESTRICTED') return <LockOutlined />;
+    return <LockOutlined />;
   };
 
   return (
-    <div style={{ display: 'flex', gap: '12px', marginBottom: 16, flexWrap: 'wrap' }}>
+    <div style={{ display: 'flex', gap: '12px', marginBottom: 16, alignItems: 'center' }}>
       <Input.Search
         placeholder="Введите название мероприятия"
         value={localSearch}
@@ -50,42 +62,34 @@ export default function SearchBar({
           setLocalSearch(value);
           onSearch(value);
         }}
-        onSearch={handleSearch}
-        style={{ width: 300 }}
-        enterButton="Поиск"
+        onSearch={() => onSearch(localSearch)}
+        style={{ flex: 1 }}
+        size="large"
       />
       
-      <Select
-        placeholder="Статус"
-        value={localStatus || undefined}
-        onChange={(value) => {
-          setLocalStatus(value);
-          onStatusChange(value);
-        }}
-        style={{ width: 150 }}
-        options={[
-          { value: '', label: 'Все статусы' },
-          { value: 'PUBLISHED', label: 'Опубликован' },
-          { value: 'DRAFT', label: 'Черновик' },
-        ]}
-        allowClear
-      />
+      <Space>
+        <Dropdown 
+          menu={{ items: statusMenuItems, onClick: handleStatusClick }}
+          trigger={['click']}
+        >
+          <Button 
+            type={statusValue ? 'primary' : 'default'}
+            icon={<FilterOutlined />}
+            size="large"
+          />
+        </Dropdown>
 
-      <Select
-        placeholder="Доступ"
-        value={localAccessLevel || undefined}
-        onChange={(value) => {
-          setLocalAccessLevel(value);
-          onAccessLevelChange(value);
-        }}
-        style={{ width: 150 }}
-        options={[
-          { value: '', label: 'Все' },
-          { value: 'PUBLIC', label: 'Публичный' },
-          { value: 'RESTRICTED', label: 'Ограниченный' },
-        ]}
-        allowClear
-      />
+        <Dropdown 
+          menu={{ items: accessMenuItems, onClick: handleAccessClick }}
+          trigger={['click']}
+        >
+          <Button 
+            type={accessLevelValue ? 'primary' : 'default'}
+            icon={getAccessIcon()}
+            size="large"
+          />
+        </Dropdown>
+      </Space>
     </div>
   );
 }
