@@ -1,0 +1,11 @@
+.header {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 15px;
+  margin-bottom: 4px;
+}
+
+.subHeader {
+  margin-bottom: 16px;
+  color: rgba(0, 0, 0, 0.45);
+}

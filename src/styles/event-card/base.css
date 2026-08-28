@@ -1,0 +1,25 @@
+.cardPage {
+  padding: 24px;
+}
+
+.eventCard {
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.infoSection {
+  margin-top: 8px;
+}
+
+.infoTitle {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #f0f0f0;
+  margin: 16px 0;
+}

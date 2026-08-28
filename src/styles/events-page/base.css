@@ -1,0 +1,18 @@
+.page {
+  padding: 24px;
+  padding-top: 0;
+}
+
+.counter {
+  margin-bottom: 12px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px;
+  color: rgba(0, 0, 0, 0.45);
+  background: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+}

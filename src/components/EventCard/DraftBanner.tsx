@@ -1,5 +1,5 @@
 import { Button } from 'antd';
-import { WarningOutlined } from '@ant-design/icons';
+import { WarningOutlined, SoundOutlined } from '@ant-design/icons';
 
 export default function DraftBanner() {
   return (
@@ -14,7 +14,9 @@ export default function DraftBanner() {
           </div>
         </div>
       </div>
-      <Button type="primary">Опубликовать</Button>
+      <Button type="primary" size="small" icon={<SoundOutlined />}>
+        Опубликовать
+      </Button>
     </div>
   );
 }

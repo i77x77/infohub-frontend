@@ -1,0 +1,26 @@
+.descriptionWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.descriptionLabel {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.88);
+  flex-shrink: 0;
+}
+
+.descriptionText {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.descriptionToggle {
+  color: #1677ff;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.descriptionToggle:hover {
+  color: #4096ff;
+}

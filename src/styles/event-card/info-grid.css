@@ -1,0 +1,27 @@
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 2fr;
+  gap: 12px 24px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.infoLabel span {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: 400;
+}
+
+.infoValue {
+  text-align: right;
+}
+
+.infoValue span {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: 500;
+}

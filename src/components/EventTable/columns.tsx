@@ -1,34 +1,8 @@
-import { Table, Tag } from 'antd';
+import { Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import type { EventListItem } from '../types/types';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import '../styles/EventsPage.css';
+import type { EventListItem } from '../../types/types';
 
-interface EventTableProps {
-  events: EventListItem[];
-  loading: boolean;
-}
-
-export default function EventTable({ events, loading }: EventTableProps) {
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-
-  const handleRowClick = (cardId: number) => {
-    const search = searchParams.get('search') || '';
-    const status = searchParams.get('status') || '';
-    const accessLevel = searchParams.get('accessLevel') || '';
-    let url = `/events/${cardId}`;
-    const params = [];
-    if (search) params.push(`search=${search}`);
-    if (status) params.push(`status=${status}`);
-    if (accessLevel) params.push(`accessLevel=${accessLevel}`);
-    if (params.length > 0) {
-      url += `?${params.join('&')}`;
-    }
-    navigate(url);
-  };
-
-  const columns: ColumnsType<EventListItem> = [
+export const getColumns = (): ColumnsType<EventListItem> => [
   {
     title: 'Тип мероприятия',
     dataIndex: ['type', 'name'],
@@ -41,7 +15,7 @@ export default function EventTable({ events, loading }: EventTableProps) {
         border: '1px solid #d9d9d9',
         borderRadius: '4px',
         padding: '2px 12px',
-        fontSize: '15px',  // ← было 12px
+        fontSize: '15px',
       }}>
         {typeName}
       </Tag>
@@ -77,7 +51,7 @@ export default function EventTable({ events, loading }: EventTableProps) {
         style={{
           borderRadius: '4px',
           padding: '2px 12px',
-          fontSize: '15px',  // ← было 12px
+          fontSize: '15px',
         }}
       >
         {status === 'PUBLISHED' ? 'Опубликован' : 'Черновик'}
@@ -95,7 +69,7 @@ export default function EventTable({ events, loading }: EventTableProps) {
         style={{
           borderRadius: '4px',
           padding: '2px 12px',
-          fontSize: '15px',  // ← было 12px
+          fontSize: '15px',
         }}
       >
         {accessLevel === 'PUBLIC' ? 'Публичный' : 'Ограниченный'}
@@ -119,7 +93,7 @@ export default function EventTable({ events, loading }: EventTableProps) {
               border: '1px solid #d9d9d9',
               borderRadius: '4px',
               padding: '2px 12px',
-              fontSize: '15px',  // ← было 12px
+              fontSize: '15px',
               marginBottom: 4,
               marginRight: 4
             }}
@@ -131,29 +105,3 @@ export default function EventTable({ events, loading }: EventTableProps) {
     ),
   },
 ];
-  
-  return (
-    <Table 
-      columns={columns} 
-      dataSource={events} 
-      loading={loading}
-      rowKey="cardId"
-      rowClassName={(record) => record.status === 'DRAFT' ? 'draft-row' : ''}
-      pagination={{
-        showSizeChanger: false,
-        showQuickJumper: {
-          goButton: false,
-        },
-        locale: {
-          jump_to: 'Перейти к:',
-          page: '',
-        },
-      }}
-      onRow={(record) => ({
-        onClick: () => handleRowClick(record.cardId),
-        style: { cursor: 'pointer' }
-      })}
-      scroll={{ x: 700 }}
-    />
-  );
-}

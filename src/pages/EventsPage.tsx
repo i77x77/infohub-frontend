@@ -1,87 +1,21 @@
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { Button, Result } from 'antd';
-import { useEvents } from '../hooks/useEvents';
-import EventTable from '../components/EventTable';
-import ErrorBoundary from '../components/ErrorBoundary';
-import SearchBar from '../components/SearchBar';
-import '../styles/EventsPage.css';
+import { useEventsPage } from '../hooks';
+import { EventTable, SearchBar, ErrorBoundary } from '../components';
+import '../styles/components/EventsPage.css';
 
 export default function EventsPage() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const { loading, error, filterEvents, refetch } = useEvents();
-  
-  const questSearch = searchParams.get('search') || '';
-  const questStatus = searchParams.get('status') || '';
-  const questAccessLevel = searchParams.get('accessLevel') || '';
-  
-  const [searchText, setSearchText] = useState(questSearch);
-  const [statusFilter, setStatusFilter] = useState(questStatus);
-  const [accessLevelFilter, setAccessLevelFilter] = useState(questAccessLevel);
-  const [debounceTimer, setDebounceTimer] = useState<ReturnType<typeof setTimeout> | null>(null);
-  
-  // Фильтрация по поиску, статусу и уровню доступа
-  const filteredEvents = filterEvents(questSearch, questStatus, questAccessLevel);
-
-  // Синхронизация с URL
-  useEffect(() => {
-    const search = searchParams.get('search') || '';
-    const status = searchParams.get('status') || '';
-    const accessLevel = searchParams.get('accessLevel') || '';
-    setSearchText(search);
-    setStatusFilter(status);
-    setAccessLevelFilter(accessLevel);
-  }, [searchParams]);
-
-  const updateParams = (newParams: { search?: string; status?: string; accessLevel?: string }) => {
-    const current = Object.fromEntries(searchParams.entries());
-    const updated = { ...current, ...newParams };
-
-    const result: { search?: string; status?: string; accessLevel?: string } = {};
-    Object.keys(updated).forEach((key) => {
-      const value = updated[key as keyof typeof updated];
-      if (value) {
-        result[key as keyof typeof result] = value;
-      }
-    });
-
-    setSearchParams(result);
-  };
-
-  // Поиск с debounce
-  const handleSearch = (value: string) => {
-    setSearchText(value);
-    
-    if (debounceTimer) {
-      clearTimeout(debounceTimer);
-    }
-
-    const newTimer = setTimeout(() => {
-      updateParams({ search: value, status: statusFilter, accessLevel: accessLevelFilter });
-    }, 512);
-
-    setDebounceTimer(newTimer);
-  };
-
-  // Статус (без debounce)
-  const handleStatusChange = (value: string) => {
-    setStatusFilter(value);
-    updateParams({ search: searchText, status: value, accessLevel: accessLevelFilter });
-  };
-
-  // Уровень доступа (без debounce)
-  const handleAccessLevelChange = (value: string) => {
-    setAccessLevelFilter(value);
-    updateParams({ search: searchText, status: statusFilter, accessLevel: value });
-  };
-
-  useEffect(() => {
-    return () => {
-      if (debounceTimer) {
-        clearTimeout(debounceTimer);
-      }
-    };
-  }, [debounceTimer]);
+  const {
+    searchText,
+    statusFilter,
+    accessLevelFilter,
+    filteredEvents,
+    loading,
+    error,
+    refetch,
+    handleSearch,
+    handleStatusChange,
+    handleAccessLevelChange,
+  } = useEventsPage();
 
   if (error) {
     return (
@@ -109,8 +43,8 @@ export default function EventsPage() {
       <div className="page">
         <h1 className="header">Мероприятия</h1>
         <div className="subHeader">Удобное управление карточками</div>
-        
-        <SearchBar 
+
+        <SearchBar
           searchValue={searchText}
           statusValue={statusFilter}
           accessLevelValue={accessLevelFilter}
@@ -119,21 +53,18 @@ export default function EventsPage() {
           onAccessLevelChange={handleAccessLevelChange}
         />
 
-        <div className="counter">
-          Всего мероприятий: {filteredEvents.length}
-        </div>
+        <div className="counter">Всего мероприятий: {filteredEvents.length}</div>
 
         {filteredEvents.length === 0 && !loading && (
           <div className="emptyState">
-            {searchText || statusFilter || accessLevelFilter ? 'Ничего не найдено. Попробуйте изменить запрос.' : 'Нет мероприятий'}
+            {searchText || statusFilter || accessLevelFilter
+              ? 'Ничего не найдено. Попробуйте изменить запрос.'
+              : 'Нет мероприятий'}
           </div>
         )}
 
         {filteredEvents.length > 0 && (
-          <EventTable 
-            events={filteredEvents} 
-            loading={loading} 
-          />
+          <EventTable events={filteredEvents} loading={loading} />
         )}
       </div>
     </ErrorBoundary>

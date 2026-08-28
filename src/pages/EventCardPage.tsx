@@ -2,7 +2,8 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Card, Button, Tag, Typography, Result } from 'antd';
 import { useEventCard } from '../hooks/useEventCard';
 import { DraftBanner, EventInfoGrid, EventTags, EventDescription } from '../components/EventCard';
-import '../styles/EventCardPage.css';
+import '../styles/components/EventCardPage.css';
+import { SoundOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
@@ -61,7 +62,11 @@ export default function EventCardPage() {
           <Tag color={isDraft ? 'orange' : 'green'}>
             {isDraft ? 'Черновик' : 'Опубликован'}
           </Tag>
-          {isDraft && <Button type="primary" size="small">Опубликовать</Button>}
+          {isDraft && (
+            <Button type="primary" size="small" icon={<SoundOutlined />}>
+              Опубликовать
+            </Button>
+          )}
         </div>
       </div>
 

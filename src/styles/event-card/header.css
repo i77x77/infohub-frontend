@@ -1,0 +1,78 @@
+.topPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.breadcrumb {
+  font-size: 14px;
+}
+
+.breadcrumbLink {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.breadcrumbSeparator {
+  margin: 0 8px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.breadcrumbCurrent {
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.topActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.topActions .ant-tag {
+  padding: 4px 14px;
+  font-size: 14px;
+  border-radius: 4px;
+  margin: 0;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.topActions .ant-btn {
+  height: 32px;
+  padding: 0 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.cardHeaderOutside {
+  margin-bottom: 12px;
+}
+
+.cardTitleWrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.cardLabel {
+  color: #13c2c2;
+  background-color: #e6fffb;
+  border: 1px solid #87e8de;
+  border-radius: 4px;
+  padding: 4px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  flex-shrink: 0;
+  display: inline-block;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.cardTitleOutside {
+  margin-bottom: 0;
+  font-weight: 600;
+  margin-top: 0;
+}

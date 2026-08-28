@@ -1,0 +1,24 @@
+/* Одинаковая высота строк */
+.ant-table-cell {
+  height: 52px !important;
+  vertical-align: middle !important;
+  padding: 4px 16px !important;
+}
+
+.ant-table-thead .ant-table-cell {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+/* Строка с черновиком */
+.draft-row {
+  background-color: #fffced !important;
+}
+
+.ant-table-row {
+  transition: background-color 0.2s;
+}
+
+.ant-table-row:hover {
+  background-color: #f0f7ff !important;
+}
