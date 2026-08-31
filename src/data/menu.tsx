@@ -18,6 +18,6 @@ export const menuItems: MenuItem[] = [
   {
     key: '/events',
     icon: <FireTwoTone />,
-    label: <Link to="/events">События</Link>,
+    label: <Link to="/events">Мероприятия</Link>,
   },
 ];

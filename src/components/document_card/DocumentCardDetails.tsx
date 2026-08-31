@@ -10,7 +10,7 @@ import {
 } from 'antd';
 import { FormOutlined } from '@ant-design/icons';
 import { STATUS } from '../../data/constants-documentCard';
-import type { IDocumentCard } from '../../interfaces/IDocumentCard';
+import type { IDocumentCard } from '../../interfaces/document_interfases/IDocumentCard';
 
 import dayjs from 'dayjs';
 import 'dayjs/locale/ru';

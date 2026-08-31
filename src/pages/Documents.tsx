@@ -2,8 +2,8 @@ import { Typography, Statistic, Table, Space, Layout, Flex } from 'antd';
 import { columns } from '../data/columns-document';
 import { useDocuments } from '../hooks/document_hooks/useDocuments';
 import {
-  SearchBarDebounce,
-  SearchBarEnter,
+  SearchBarDebounce, // Через таймер
+  /* SearchBarEnter, // Через кнопку */
 } from '../components/search_bar/SearchBar'; // Поиск реализован двумя спосабами, первый это поиск чеерез таймер, второй по кнопке
 
 import { useNavigate, useSearchParams } from 'react-router-dom';
