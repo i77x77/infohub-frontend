@@ -1,4 +1,5 @@
-import { Button, Result } from 'antd';
+import { Button, Result, Spin, message } from 'antd';
+import { useRef, useEffect } from 'react';
 import { useEventsPage } from '../hooks';
 import { EventTable, SearchBar, ErrorBoundary } from '../components';
 import '../styles/components/EventsPage.css';
@@ -16,6 +17,18 @@ export default function EventsPage() {
     handleStatusChange,
     handleAccessLevelChange,
   } = useEventsPage();
+
+  const errorShown = useRef(false);
+
+  useEffect(() => {
+    if (error && !errorShown.current) {
+      message.error(error);
+      errorShown.current = true;
+    }
+    if (!error) {
+      errorShown.current = false;
+    }
+  }, [error]);
 
   if (error) {
     return (
@@ -63,7 +76,13 @@ export default function EventsPage() {
           </div>
         )}
 
-        {filteredEvents.length > 0 && (
+        {loading && (
+          <div style={{ display: 'flex', justifyContent: 'center', padding: '40px' }}>
+            <Spin size="large" />
+          </div>
+        )}
+
+        {!loading && filteredEvents.length > 0 && (
           <EventTable events={filteredEvents} loading={loading} />
         )}
       </div>

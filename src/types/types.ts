@@ -12,7 +12,7 @@ export type Organizer = {
   id: number;
   name: string;
   shortName: string;
-  fullName?: string; // может быть в карточке
+  fullName?: string; 
 };
 
 // Место проведения
@@ -20,7 +20,7 @@ export type Location = {
   country: string;
   region: string;
   city: string;
-  address?: string; // может быть в карточке
+  address?: string; 
 };
 
 // Тег
@@ -52,8 +52,7 @@ export type EventListItem = {
 // Карточка мероприятия (GET /api/events/{cardId})
 // Включает все поля из списка + дополнительные
 export type Event = EventListItem & {
-  // Дополнительные поля для карточки (если есть)
-  // Пока все поля уже есть в EventListItem
+
 };
 
 // Входные данные для создания мероприятия (POST /api/events)
@@ -70,7 +69,6 @@ export type EventInput = {
 };
 
 // Входные данные для обновления мероприятия (PATCH /api/events/{cardId})
-// Все поля опциональны (как в Swagger)
 export type EventUpdate = {
   title?: string;
   eventTypeId?: number;

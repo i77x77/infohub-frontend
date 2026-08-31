@@ -5,6 +5,7 @@ import EventsPage from "./pages/EventsPage";
 import EventCardPage from "./pages/EventCardPage";
 import Documents from "./pages/Documents";
 import NotFound from "./pages/NotFound";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   return (
@@ -13,7 +14,14 @@ function App() {
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="events" element={<EventsPage />} />
-          <Route path="events/:id" element={<EventCardPage />} />
+          <Route
+            path="events/:id"
+            element={
+              <ErrorBoundary>
+                <EventCardPage />
+              </ErrorBoundary>
+            }
+          />
           <Route path="documents" element={<Documents />} />
           <Route path="*" element={<NotFound />} />
         </Route>

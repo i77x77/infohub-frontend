@@ -1,5 +1,5 @@
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { Card, Button, Tag, Typography, Result } from 'antd';
+import { Card, Button, Tag, Typography, Result, Spin } from 'antd';
 import { useEventCard } from '../hooks/useEventCard';
 import { DraftBanner, EventInfoGrid, EventTags, EventDescription } from '../components/EventCard';
 import '../styles/components/EventCardPage.css';
@@ -28,7 +28,16 @@ export default function EventCardPage() {
   };
 
   if (loading) {
-    return <div className="cardPage" style={{ textAlign: 'center', paddingTop: 48 }}>Загрузка...</div>;
+    return (
+      <div className="cardPage" style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        minHeight: '60vh' 
+      }}>
+        <Spin size="large" />
+      </div>
+    );
   }
 
   if (error || !event) {

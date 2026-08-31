@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { message } from 'antd';
 import { getEvents } from '../api/eventsApi';
 import type { EventListItem } from '../types/types';
 
@@ -13,9 +12,6 @@ export function useEvents() {
     setError(null);
     try {
       const data = await getEvents();
-      // В src/hooks/useEvents.ts временно
-      //const data = [];
-
       setEvents(data);
     } catch (err) {
       let errorMessage = 'Не удалось загрузить мероприятия';
@@ -33,7 +29,6 @@ export function useEvents() {
       }
       
       setError(errorMessage);
-      message.error(errorMessage);
     } finally {
       setLoading(false);
     }

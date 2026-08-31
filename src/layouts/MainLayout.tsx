@@ -30,7 +30,7 @@ function MainLayout() {
               icon: <DatabaseOutlined style={{ fontSize: 20 }} />,
               label: '',
               onClick: () => navigate('/'),
-              style: { marginBottom: 36 }, // ← увеличенный отступ ТОЛЬКО под первой иконкой
+              style: { marginBottom: 36 }, 
             },
             {
               key: 'events',

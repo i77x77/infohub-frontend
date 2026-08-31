@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react'; 
 import { message } from 'antd';
 import { getEventById } from '../api/eventsApi';
 import type { Event } from '../types/types';
@@ -7,6 +7,7 @@ export function useEventCard(id: number) {
   const [event, setEvent] = useState<Event | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const errorShown = useRef(false); // ← добавляем флаг
 
   useEffect(() => {
     if (isNaN(id)) {
@@ -17,13 +18,18 @@ export function useEventCard(id: number) {
     const loadEvent = async () => {
       setLoading(true);
       setError(null);
+      errorShown.current = false; 
       try {
         const data = await getEventById(id);
         setEvent(data);
       } catch (err) {
         const errorMessage = err instanceof Error ? err.message : 'Не удалось загрузить мероприятие';
         setError(errorMessage);
-        message.error(errorMessage);
+        
+        if (!errorShown.current) {
+          message.error(errorMessage);
+          errorShown.current = true;
+        }
       } finally {
         setLoading(false);
       }

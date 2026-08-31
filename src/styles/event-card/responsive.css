@@ -1,0 +1,254 @@
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты (768px - 1024px) */
+@media (max-width: 1024px) {
+  .cardPage {
+    padding: 16px;
+  }
+
+  .cardTitleOutside {
+    font-size: 22px !important;
+  }
+
+  .infoGrid {
+    gap: 10px 16px;
+  }
+
+  .infoLabel span {
+    font-size: 13px;
+  }
+
+  .infoValue span {
+    font-size: 14px;
+  }
+}
+
+/* Мобильные устройства (до 768px) */
+@media (max-width: 768px) {
+  .cardPage {
+    padding: 12px;
+  }
+
+  .topPanel {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .breadcrumb {
+    font-size: 13px;
+  }
+
+  .topActions {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .topActions .ant-tag {
+    font-size: 12px;
+    padding: 2px 10px;
+    height: 28px;
+  }
+
+  .topActions .ant-btn {
+    font-size: 12px;
+    padding: 0 12px;
+    height: 28px;
+  }
+
+  .cardHeaderOutside {
+    margin-bottom: 10px;
+  }
+
+  .cardTitleWrapper {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .cardTitleOutside {
+    font-size: 20px !important;
+  }
+
+  .cardLabel {
+    font-size: 12px;
+    height: 28px;
+    padding: 2px 10px;
+  }
+
+  .draftBanner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .draftBannerContent {
+    gap: 10px;
+  }
+
+  .draftTitle {
+    font-size: 15px;
+  }
+
+  .draftSubtitle {
+    font-size: 13px;
+  }
+
+  .draftBanner .ant-btn {
+    align-self: flex-start;
+    height: 28px;
+    font-size: 13px;
+    padding: 0 14px;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 12px;
+  }
+
+  .infoItem {
+    gap: 4px;
+  }
+
+  .infoLabel span {
+    font-size: 12px;
+  }
+
+  .infoValue span {
+    font-size: 13px;
+  }
+
+  .infoTitle {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .tagsWrapper {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tagsLabel {
+    font-size: 13px;
+  }
+
+  .tagItem {
+    font-size: 13px;
+    padding: 1px 10px;
+  }
+
+  .descriptionWrapper {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .descriptionLabel {
+    font-size: 13px;
+  }
+
+  .descriptionText {
+    font-size: 14px;
+  }
+
+  .divider {
+    margin: 12px 0;
+  }
+}
+
+/* Маленькие телефоны (до 480px) */
+@media (max-width: 480px) {
+  .cardPage {
+    padding: 8px;
+  }
+
+  .breadcrumb {
+    font-size: 12px;
+  }
+
+  .breadcrumbSeparator {
+    margin: 0 4px;
+  }
+
+  .topActions .ant-tag {
+    font-size: 11px;
+    padding: 1px 8px;
+    height: 24px;
+  }
+
+  .topActions .ant-btn {
+    font-size: 11px;
+    padding: 0 10px;
+    height: 24px;
+  }
+
+  .cardTitleOutside {
+    font-size: 17px !important;
+  }
+
+  .cardLabel {
+    font-size: 11px;
+    height: 24px;
+    padding: 1px 8px;
+  }
+
+  .draftBanner {
+    padding: 10px 12px;
+  }
+
+  .draftTitle {
+    font-size: 14px;
+  }
+
+  .draftSubtitle {
+    font-size: 12px;
+  }
+
+  .draftBanner .ant-btn {
+    height: 24px;
+    font-size: 12px;
+    padding: 0 12px;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 10px;
+  }
+
+  .infoLabel span {
+    font-size: 11px;
+  }
+
+  .infoValue span {
+    font-size: 12px;
+  }
+
+  .infoTitle {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .tagItem {
+    font-size: 11px;
+    padding: 1px 8px;
+  }
+
+  .tagsLabel {
+    font-size: 12px;
+  }
+
+  .descriptionLabel {
+    font-size: 12px;
+  }
+
+  .descriptionText {
+    font-size: 13px;
+  }
+
+  .divider {
+    margin: 8px 0;
+  }
+
+  .divider:last-of-type {
+    margin-bottom: 0;
+  }
+}
