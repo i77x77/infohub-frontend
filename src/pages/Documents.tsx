@@ -42,9 +42,9 @@ function Documents() {
 
   return (
     <Layout>
-      <Space direction="vertical" style={{ margin: 24, gap: 16 }}>
+      <Space orientation="vertical" style={{ margin: 24, gap: 16 }}>
         {/* Заголовок страницы */}
-        <Space direction="vertical" style={{ width: '100%' }}>
+        <Space orientation="vertical" style={{ width: '100%' }}>
           <Title level={2} style={{ margin: 0 }}>
             Документы
           </Title>
@@ -52,7 +52,7 @@ function Documents() {
         </Space>
 
         {/* Блок поиска и статистики */}
-        <Space direction="vertical" style={{ width: '100%' }}>
+        <Space orientation="vertical" style={{ width: '100%' }}>
           <Flex justify="space-between" align="center" wrap gap="middle">
             <SearchBarDebounce value={search} onSearch={handleSearch} />
             {/* <SearchBarEnter value={search} onSearch={handleSearch} /> */}
@@ -76,7 +76,7 @@ function Documents() {
         </Space>
 
         {/* Таблица */}
-        <Space direction="vertical" style={{ width: '100%' }}>
+        <Space orientation="vertical" style={{ width: '100%' }}>
           <Table
             size="small"
             dataSource={data}

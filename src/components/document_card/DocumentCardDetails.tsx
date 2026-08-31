@@ -37,7 +37,7 @@ export function DocumentDetailsCard({
     <Card>
       {statusConfig && (
         <Alert
-          message={
+          title={
             <Text
               strong
               style={{
